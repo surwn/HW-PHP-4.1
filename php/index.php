@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv= "Content-Type" content="text/html; charset-windows-1251"/>
-    <title>Bame сообщение успешно отправлено</title>
-</head>
-<body>
-<?php
-    $back = "<p><a href=\"javascript: histor.back()">Вернуться назад</a></р>";
-    if(.!empty($_POST['name']) and .!empty($_POST['phone]) and .!empty($_POST['mail'])
-    and .!empty($_POST['message'])
-    $name = trim(strip_tags($_POST['name'])).
-    $phone = trim(strip_tags($_POST['phone]));
-    $mail = trim(strip_tags($_POST['mail']));
-    $message = trim(strip_tags($_POST[message']));
-    mail('ek.frolova130998@gmail.com', 'Письмо с адрес вашего сайта',
-    'Вам написал: '.$name.'<br/>Ero номер: '.$phone.'<br/>Его почта: '.$mail.'<br/>
-Его сообщение: '.$message,"Content-type:text/html;charset=windows-1251");
-    echo "Ваше сообщение успешно отправлено!<br> Вы получите ответ в ближайшее время<br> $back";
-    exit;
-}
-else {
-    echo "Для отправки сообщения заполните все поля! $back";
-    exit;
-}
-?>
-</body>
-</html>
+ 
+   <head>
+      <title>PHP-Feedback</title>
+	  <link rel="stylesheet" media="all" type="text/css" href="style.css" />
+   </head>
+ 
+   <body>
+ 
+    <div class="conteiner">
+		<script>
+			function checkForm(form) {
+				var name = form.name.value;
+				var n = name.match(/^[A-Za-zА-Яа-я ]*[A-Za-zА-Яа-я ]+$/);
+				if (!n) {
+					alert("Имя введено неверно, пожалуйста исправьте ошибку");
+					return false;
+				}
+				var phone = form.phone.value;
+				var p = phone.match(/^[0-9+][0-9- ]*[0-9- ]+$/);
+				if (!p) {
+					alert("Телефон введен неверно");
+					return false;
+				}
+				var mail = form.mail.value;
+				var m = mail.match(/^[A-Za-z0-9][A-Za-z0-9\._-]*[A-Za-z0-9_]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*\.)+[A-Za-z]+$/);
+				if (!m) {
+					alert("E-mail введен неверно, пожалуйста исправьте ошибку");
+					return false;
+				}
+				return true;
+			}
+		
+	</div>
+ 
+   </body>
+ 
